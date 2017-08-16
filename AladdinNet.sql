@@ -1,20 +1,40 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : mysql
  Source Server Type    : MySQL
- Source Server Version : 50542
+ Source Server Version : 50635
  Source Host           : localhost
  Source Database       : AladdinNet
 
  Target Server Type    : MySQL
- Target Server Version : 50542
+ Target Server Version : 50635
  File Encoding         : utf-8
 
- Date: 11/05/2016 01:54:50 AM
+ Date: 08/16/2017 10:46:21 AM
 */
 
+SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+--  Table structure for `LoginInfo`
+-- ----------------------------
+DROP TABLE IF EXISTS `LoginInfo`;
+CREATE TABLE `LoginInfo` (
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `LoginInfo`
+-- ----------------------------
+BEGIN;
+INSERT INTO `LoginInfo` VALUES ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:03:28', '2017-08-16 02:03:28', null), ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:07:12', '2017-08-16 02:07:12', null), ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:07:13', '2017-08-16 02:07:13', null), ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:07:14', '2017-08-16 02:07:14', null), ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:08:20', '2017-08-16 02:08:20', null), ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:08:24', '2017-08-16 02:08:24', null), ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:12:46', '2017-08-16 02:12:46', null), ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:27:36', '2017-08-16 02:27:36', null), ('test', 'test', '2017-08-16 02:49:12', '2017-08-16 02:49:12', null), ('xxx', 'xx', '2017-08-16 02:57:24', '2017-08-16 02:57:24', null), ('ttt', 'tt', '2017-08-16 02:59:02', '2017-08-16 02:59:02', null);
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `admin_role`
@@ -65,7 +85,7 @@ CREATE TABLE `admins` (
 --  Records of `admins`
 -- ----------------------------
 BEGIN;
-INSERT INTO `admins` VALUES ('1', 'admin@aladdin.com', '$2y$10$5vHfImCBrtCTazXpvAGo0eNE1jlUhnUpK5THelX9yJPIlvnIFkFFO', 'QhlnxjNxIIMbKtouOAWiOtH0BWo22YFOlCP9iIuCPSpVNYgBtPR6jlWQvE0m', '0', '', '2016-07-05 14:46:39', '2016-07-22 21:25:28', null, null, 'E9fOSSulwCA18DlEY9yVlRKMwJr3OVGxBJC0YdHvOwivsKvIz4SsaVTn1QTH', '???', null, '2016-08-19 17:22:37'), ('2', 'reviewer@aladdin.com', '$2y$10$5vHfImCBrtCTazXpvAGo0eNE1jlUhnUpK5THelX9yJPIlvnIFkFFO', 'cz17Bw1mfH9hHtXZAFKAJQVmnhBz6fIaaOQoCqTbZ3iUqH8RmDFVq8TfuaBG', '0', '', '2016-07-06 01:50:56', '2016-07-08 00:11:37', null, null, null, '??', null, '2016-08-19 17:08:40');
+INSERT INTO `admins` VALUES ('1', 'admin@aladdin.com', '$2y$10$5vHfImCBrtCTazXpvAGo0eNE1jlUhnUpK5THelX9yJPIlvnIFkFFO', 'QhlnxjNxIIMbKtouOAWiOtH0BWo22YFOlCP9iIuCPSpVNYgBtPR6jlWQvE0m', '0', '', '2016-07-05 14:46:39', '2016-07-22 21:25:28', null, null, 'NxibusYBkIMw8UauPyfstcLWA4Pi88J5NGYxjG9kxC0aluKGAMt3HlZxmRHp', 'Admin', null, '2017-08-16 03:10:04'), ('2', 'reviewer@aladdin.com', '$2y$10$5vHfImCBrtCTazXpvAGo0eNE1jlUhnUpK5THelX9yJPIlvnIFkFFO', 'cz17Bw1mfH9hHtXZAFKAJQVmnhBz6fIaaOQoCqTbZ3iUqH8RmDFVq8TfuaBG', '0', '', '2016-07-06 01:50:56', '2016-07-08 00:11:37', null, null, null, 'Review', null, '2017-08-16 01:25:22');
 COMMIT;
 
 -- ----------------------------
@@ -80,13 +100,13 @@ CREATE TABLE `links` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `main` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `links`
 -- ----------------------------
 BEGIN;
-INSERT INTO `links` VALUES ('1', 'Admins', 'Admin', null, '2016-07-05 14:46:39', '1'), ('2', 'Traces', 'Trace', '2016-07-07 12:08:34', '2016-07-07 12:08:34', null), ('3', 'Server', 'Server', '2016-10-04 00:00:00', '2016-10-04 00:00:00', null);
+INSERT INTO `links` VALUES ('1', 'Admins', 'Admin', null, '2016-07-05 14:46:39', '1'), ('4', 'LoginInfos', 'LoginInfo', '2017-08-16 01:42:36', '2017-08-16 01:42:36', null);
 COMMIT;
 
 -- ----------------------------
