@@ -11,11 +11,36 @@
  Target Server Version : 50635
  File Encoding         : utf-8
 
- Date: 08/16/2017 10:46:21 AM
+ Date: 08/16/2017 18:08:54 PM
 */
 
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+--  Table structure for `JobInfo`
+-- ----------------------------
+DROP TABLE IF EXISTS `JobInfo`;
+CREATE TABLE `JobInfo` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Date` varchar(255) DEFAULT NULL,
+  `Grower` varchar(255) DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `FarmName` varchar(255) DEFAULT NULL,
+  `FieldName` varchar(255) DEFAULT NULL,
+  `AppType` varchar(255) DEFAULT NULL,
+  `EquipID` varchar(255) DEFAULT NULL,
+  `Acres` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `JobInfo`
+-- ----------------------------
+BEGIN;
+INSERT INTO `JobInfo` VALUES ('1', 'Date', 'Grower', '2017-08-16 23:49:36', '2017-08-16 23:49:36', 'FarmName', 'FieldName', 'AppType', '0', 'Acres'), ('2', 'Date', 'Grower', '2017-08-16 23:49:55', '2017-08-16 23:49:55', 'FarmName', 'FieldName', 'AppType', '0', 'Acres'), ('3', 'Xd', 'Sdf', '2017-08-17 00:08:03', '2017-08-17 00:08:03', 'Sd', 'Dfdsf', 'Sdf', 'Hhh', '');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `LoginInfo`
@@ -28,13 +53,13 @@ CREATE TABLE `LoginInfo` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `LoginInfo`
 -- ----------------------------
 BEGIN;
-INSERT INTO `LoginInfo` VALUES ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:03:28', '2017-08-16 02:03:28', null), ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:07:12', '2017-08-16 02:07:12', null), ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:07:13', '2017-08-16 02:07:13', null), ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:07:14', '2017-08-16 02:07:14', null), ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:08:20', '2017-08-16 02:08:20', null), ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:08:24', '2017-08-16 02:08:24', null), ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:12:46', '2017-08-16 02:12:46', null), ('dfdf', 'sssdfsdfsdf', '2017-08-16 02:27:36', '2017-08-16 02:27:36', null), ('test', 'test', '2017-08-16 02:49:12', '2017-08-16 02:49:12', null), ('xxx', 'xx', '2017-08-16 02:57:24', '2017-08-16 02:57:24', null), ('ttt', 'tt', '2017-08-16 02:59:02', '2017-08-16 02:59:02', null);
+INSERT INTO `LoginInfo` VALUES ('1', 'sssdfsdfsdf', '2017-08-16 02:03:28', '2017-08-16 02:03:28', null), ('2', 'sssdfsdfsdf', '2017-08-16 02:07:12', '2017-08-16 02:07:12', null), ('3', 'sssdfsdfsdf', '2017-08-16 02:07:13', '2017-08-16 02:07:13', null), ('4', 'sssdfsdfsdf', '2017-08-16 02:07:14', '2017-08-16 02:07:14', null), ('5', 'sssdfsdfsdf', '2017-08-16 02:08:20', '2017-08-16 02:08:20', null), ('6', 'sssdfsdfsdf', '2017-08-16 02:08:24', '2017-08-16 02:08:24', null), ('7', 'sssdfsdfsdf', '2017-08-16 02:12:46', '2017-08-16 02:12:46', null), ('8', 'sssdfsdfsdf', '2017-08-16 02:27:36', '2017-08-16 02:27:36', null), ('9', 'test', '2017-08-16 02:49:12', '2017-08-16 02:49:12', null), ('10', 'xx', '2017-08-16 02:57:24', '2017-08-16 02:57:24', null), ('11', 'tt', '2017-08-16 02:59:02', '2017-08-16 02:59:02', null), ('12', 'Ttes', 'test', '2017-08-17 00:07:24', '2017-08-17 00:07:24');
 COMMIT;
 
 -- ----------------------------
@@ -101,13 +126,13 @@ CREATE TABLE `links` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `main` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `links`
 -- ----------------------------
 BEGIN;
-INSERT INTO `links` VALUES ('1', 'Admins', 'Admin', null, '2016-07-05 14:46:39', '1'), ('4', 'LoginInfos', 'LoginInfo', '2017-08-16 01:42:36', '2017-08-16 01:42:36', null);
+INSERT INTO `links` VALUES ('1', 'Admins', 'Admin', null, '2016-07-05 14:46:39', '1'), ('4', 'LoginInfos', 'LoginInfo', '2017-08-16 01:42:36', '2017-08-16 01:42:36', null), ('5', 'JobInfos', 'JobInfo', '2017-08-16 23:36:33', '2017-08-16 23:36:33', null);
 COMMIT;
 
 -- ----------------------------

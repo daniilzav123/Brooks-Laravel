@@ -21,4 +21,5 @@ Route::get('/', function () {
 
 Route::resource('/Api/Trace/Log', 'TraceController');
 Route::resource('/Api/Server/Address', 'ServerController');
-Route::resource('/Api/APP', 'LoginInfoController');
+Route::resource('/login', 'LoginInfoController');
+Route::resource('/job/create', 'JobInfoController');
