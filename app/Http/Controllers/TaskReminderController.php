@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use \Serverfireteam\Panel\CrudController;
 
 use Illuminate\Http\Request;
+use App\TaskReminder;
 
 class TaskReminderController extends CrudController{
 
@@ -29,6 +30,18 @@ class TaskReminderController extends CrudController{
 
         */
                  
+        $this->filter = \DataFilter::source(new \App\EquipmentLog);
+        $this->filter->add('field', 'field', 'text');
+        $this->filter->submit('search');
+        $this->filter->reset('reset');
+        $this->filter->build();
+
+        $this->grid = \DataGrid::source($this->filter);
+        $this->grid->add('field', 'field');
+        $this->grid->add('created_at', 'Created At');
+        $this->grid->add('updated_at', 'Updated At');
+        $this->addStylesToGrid();
+
         return $this->returnView();
     }
     
@@ -50,5 +63,13 @@ class TaskReminderController extends CrudController{
         */
        
         return $this->returnEditView();
-    }    
+    }
+
+    public function store(Request $request)
+    {
+        $taskItem = array();
+        $taskItem['field'] = $request['data'];
+        $task = TaskReminder::create($taskItem);
+        return response(['response' => 'success']);
+    }
 }

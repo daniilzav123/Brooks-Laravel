@@ -11,7 +11,7 @@
  Target Server Version : 50635
  File Encoding         : utf-8
 
- Date: 08/18/2017 19:08:37 PM
+ Date: 08/18/2017 20:01:30 PM
 */
 
 SET NAMES utf8;
@@ -32,8 +32,18 @@ CREATE TABLE `ApplicationLog` (
 DROP TABLE IF EXISTS `EquipmentLog`;
 CREATE TABLE `EquipmentLog` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `field` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `EquipmentLog`
+-- ----------------------------
+BEGIN;
+INSERT INTO `EquipmentLog` VALUES ('4', 'test2', '2017-08-19 02:00:58', '2017-08-19 02:00:58');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `JobInfo`
@@ -77,7 +87,7 @@ CREATE TABLE `LoginInfo` (
 --  Records of `LoginInfo`
 -- ----------------------------
 BEGIN;
-INSERT INTO `LoginInfo` VALUES ('1', 'sssdfsdfsdf', '2017-08-16 02:03:28', '2017-08-16 02:03:28', null), ('2', 'sssdfsdfsdf', '2017-08-16 02:07:12', '2017-08-16 02:07:12', null), ('3', 'sssdfsdfsdf', '2017-08-16 02:07:13', '2017-08-16 02:07:13', null), ('4', 'sssdfsdfsdf', '2017-08-16 02:07:14', '2017-08-16 02:07:14', null), ('5', 'sssdfsdfsdf', '2017-08-16 02:08:20', '2017-08-16 02:08:20', null), ('6', 'sssdfsdfsdf', '2017-08-16 02:08:24', '2017-08-16 02:08:24', null), ('7', 'sssdfsdfsdf', '2017-08-16 02:12:46', '2017-08-16 02:12:46', null), ('8', 'sssdfsdfsdf', '2017-08-16 02:27:36', '2017-08-16 02:27:36', null), ('9', 'test', '2017-08-16 02:49:12', '2017-08-16 02:49:12', null), ('10', 'xx', '2017-08-16 02:57:24', '2017-08-16 02:57:24', null), ('11', 'tt', '2017-08-16 02:59:02', '2017-08-16 02:59:02', null), ('12', 'Ttes', 'test', '2017-08-17 00:07:24', '2017-08-17 00:07:24');
+INSERT INTO `LoginInfo` VALUES ('12', 'Ttes', 'test', '2017-08-17 00:07:24', '2017-08-17 00:07:24');
 COMMIT;
 
 -- ----------------------------
@@ -86,8 +96,18 @@ COMMIT;
 DROP TABLE IF EXISTS `TaskReminder`;
 CREATE TABLE `TaskReminder` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `field` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records of `TaskReminder`
+-- ----------------------------
+BEGIN;
+INSERT INTO `TaskReminder` VALUES ('3', 'test2', '2017-08-19 02:01:01', '2017-08-19 02:01:01');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `admin_role`

@@ -23,3 +23,5 @@ Route::resource('/Api/Trace/Log', 'TraceController');
 Route::resource('/Api/Server/Address', 'ServerController');
 Route::resource('/login', 'LoginInfoController');
 Route::resource('/job/create', 'JobInfoController');
+Route::resource('/task/reminder', 'TaskReminderController');
+Route::resource('/equip/log', 'EquipmentLogController');

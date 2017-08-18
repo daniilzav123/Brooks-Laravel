@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use \Serverfireteam\Panel\CrudController;
 
 use Illuminate\Http\Request;
+use App\EquipmentLog;
 
 class EquipmentLogController extends CrudController{
 
@@ -28,8 +29,21 @@ class EquipmentLogController extends CrudController{
 			$this->addStylesToGrid();
 
         */
-                 
+
+        $this->filter = \DataFilter::source(new \App\EquipmentLog);
+        $this->filter->add('Field', 'Field', 'text');
+        $this->filter->submit('search');
+        $this->filter->reset('reset');
+        $this->filter->build();
+
+        $this->grid = \DataGrid::source($this->filter);
+        $this->grid->add('field', 'field');
+        $this->grid->add('created_at', 'Created At');
+        $this->grid->add('updated_at', 'Updated At');
+        $this->addStylesToGrid();
+
         return $this->returnView();
+
     }
     
     public function  edit($entity){
@@ -50,5 +64,13 @@ class EquipmentLogController extends CrudController{
         */
        
         return $this->returnEditView();
-    }    
+    }
+
+    public function store(Request $request)
+    {
+        $equiplogItem = array();
+        $equiplogItem['field'] = $request['data'];
+        $equip = EquipmentLog::create($equiplogItem);
+        return response(['response' => 'success']);
+    }
 }
