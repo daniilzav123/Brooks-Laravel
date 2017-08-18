@@ -11,11 +11,29 @@
  Target Server Version : 50635
  File Encoding         : utf-8
 
- Date: 08/16/2017 18:08:54 PM
+ Date: 08/18/2017 19:08:37 PM
 */
 
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+--  Table structure for `ApplicationLog`
+-- ----------------------------
+DROP TABLE IF EXISTS `ApplicationLog`;
+CREATE TABLE `ApplicationLog` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Table structure for `EquipmentLog`
+-- ----------------------------
+DROP TABLE IF EXISTS `EquipmentLog`;
+CREATE TABLE `EquipmentLog` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `JobInfo`
@@ -61,6 +79,15 @@ CREATE TABLE `LoginInfo` (
 BEGIN;
 INSERT INTO `LoginInfo` VALUES ('1', 'sssdfsdfsdf', '2017-08-16 02:03:28', '2017-08-16 02:03:28', null), ('2', 'sssdfsdfsdf', '2017-08-16 02:07:12', '2017-08-16 02:07:12', null), ('3', 'sssdfsdfsdf', '2017-08-16 02:07:13', '2017-08-16 02:07:13', null), ('4', 'sssdfsdfsdf', '2017-08-16 02:07:14', '2017-08-16 02:07:14', null), ('5', 'sssdfsdfsdf', '2017-08-16 02:08:20', '2017-08-16 02:08:20', null), ('6', 'sssdfsdfsdf', '2017-08-16 02:08:24', '2017-08-16 02:08:24', null), ('7', 'sssdfsdfsdf', '2017-08-16 02:12:46', '2017-08-16 02:12:46', null), ('8', 'sssdfsdfsdf', '2017-08-16 02:27:36', '2017-08-16 02:27:36', null), ('9', 'test', '2017-08-16 02:49:12', '2017-08-16 02:49:12', null), ('10', 'xx', '2017-08-16 02:57:24', '2017-08-16 02:57:24', null), ('11', 'tt', '2017-08-16 02:59:02', '2017-08-16 02:59:02', null), ('12', 'Ttes', 'test', '2017-08-17 00:07:24', '2017-08-17 00:07:24');
 COMMIT;
+
+-- ----------------------------
+--  Table structure for `TaskReminder`
+-- ----------------------------
+DROP TABLE IF EXISTS `TaskReminder`;
+CREATE TABLE `TaskReminder` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `admin_role`
@@ -126,13 +153,13 @@ CREATE TABLE `links` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `main` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `links`
 -- ----------------------------
 BEGIN;
-INSERT INTO `links` VALUES ('1', 'Admins', 'Admin', null, '2016-07-05 14:46:39', '1'), ('4', 'LoginInfos', 'LoginInfo', '2017-08-16 01:42:36', '2017-08-16 01:42:36', null), ('5', 'JobInfos', 'JobInfo', '2017-08-16 23:36:33', '2017-08-16 23:36:33', null);
+INSERT INTO `links` VALUES ('1', 'Admins', 'Admin', null, '2016-07-05 14:46:39', '1'), ('4', 'Users List', 'LoginInfo', '2017-08-16 01:42:36', '2017-08-16 01:42:36', null), ('5', 'Application Log', 'JobInfo', '2017-08-16 23:36:33', '2017-08-16 23:36:33', null), ('7', 'Equipment Log', 'EquipmentLog', '2017-08-19 01:04:35', '2017-08-19 01:04:35', null), ('8', 'Task Reminder', 'TaskReminder', '2017-08-19 01:04:44', '2017-08-19 01:04:44', null);
 COMMIT;
 
 -- ----------------------------
