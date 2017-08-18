@@ -11,7 +11,7 @@
  Target Server Version : 50635
  File Encoding         : utf-8
 
- Date: 08/18/2017 20:01:30 PM
+ Date: 08/18/2017 20:04:36 PM
 */
 
 SET NAMES utf8;
@@ -158,7 +158,7 @@ CREATE TABLE `admins` (
 --  Records of `admins`
 -- ----------------------------
 BEGIN;
-INSERT INTO `admins` VALUES ('1', 'admin@aladdin.com', '$2y$10$5vHfImCBrtCTazXpvAGo0eNE1jlUhnUpK5THelX9yJPIlvnIFkFFO', 'QhlnxjNxIIMbKtouOAWiOtH0BWo22YFOlCP9iIuCPSpVNYgBtPR6jlWQvE0m', '0', '', '2016-07-05 14:46:39', '2016-07-22 21:25:28', null, null, 'NxibusYBkIMw8UauPyfstcLWA4Pi88J5NGYxjG9kxC0aluKGAMt3HlZxmRHp', 'Admin', null, '2017-08-16 03:10:04'), ('2', 'reviewer@aladdin.com', '$2y$10$5vHfImCBrtCTazXpvAGo0eNE1jlUhnUpK5THelX9yJPIlvnIFkFFO', 'cz17Bw1mfH9hHtXZAFKAJQVmnhBz6fIaaOQoCqTbZ3iUqH8RmDFVq8TfuaBG', '0', '', '2016-07-06 01:50:56', '2016-07-08 00:11:37', null, null, null, 'Review', null, '2017-08-16 01:25:22');
+INSERT INTO `admins` VALUES ('1', 'admin@mybrooks.com', '$2y$10$5vHfImCBrtCTazXpvAGo0eNE1jlUhnUpK5THelX9yJPIlvnIFkFFO', 'QhlnxjNxIIMbKtouOAWiOtH0BWo22YFOlCP9iIuCPSpVNYgBtPR6jlWQvE0m', '0', '', '2016-07-05 14:46:39', '2016-07-22 21:25:28', null, null, 'NxibusYBkIMw8UauPyfstcLWA4Pi88J5NGYxjG9kxC0aluKGAMt3HlZxmRHp', 'Admin', null, '2017-08-16 03:10:04'), ('2', 'reviewer@aladdin.com', '$2y$10$5vHfImCBrtCTazXpvAGo0eNE1jlUhnUpK5THelX9yJPIlvnIFkFFO', 'cz17Bw1mfH9hHtXZAFKAJQVmnhBz6fIaaOQoCqTbZ3iUqH8RmDFVq8TfuaBG', '0', '', '2016-07-06 01:50:56', '2016-07-08 00:11:37', null, null, null, 'Review', null, '2017-08-16 01:25:22');
 COMMIT;
 
 -- ----------------------------
