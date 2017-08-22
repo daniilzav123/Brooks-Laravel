@@ -11,7 +11,7 @@
  Target Server Version : 50635
  File Encoding         : utf-8
 
- Date: 08/18/2017 20:04:36 PM
+ Date: 08/22/2017 16:14:39 PM
 */
 
 SET NAMES utf8;
@@ -32,17 +32,19 @@ CREATE TABLE `ApplicationLog` (
 DROP TABLE IF EXISTS `EquipmentLog`;
 CREATE TABLE `EquipmentLog` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `field` varchar(100) DEFAULT NULL,
+  `jobID` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `Date` varchar(100) DEFAULT NULL,
+  `Hour` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `EquipmentLog`
 -- ----------------------------
 BEGIN;
-INSERT INTO `EquipmentLog` VALUES ('4', 'test2', '2017-08-19 02:00:58', '2017-08-19 02:00:58');
+INSERT INTO `EquipmentLog` VALUES ('6', '0', '2017-08-22 21:48:15', '2017-08-22 21:48:15', null, null), ('7', '0', '2017-08-22 21:52:58', '2017-08-22 21:52:58', '2017-01-01', '22'), ('8', '1', '2017-08-22 21:54:10', '2017-08-22 21:54:10', null, '0'), ('9', '8', '2017-08-22 22:03:37', '2017-08-22 22:03:37', '2017-01-01', '8');
 COMMIT;
 
 -- ----------------------------
@@ -60,14 +62,17 @@ CREATE TABLE `JobInfo` (
   `AppType` varchar(255) DEFAULT NULL,
   `EquipID` varchar(255) DEFAULT NULL,
   `Acres` varchar(255) DEFAULT NULL,
+  `note` varchar(255) DEFAULT NULL,
+  `imageUrl` varchar(255) DEFAULT NULL,
+  `User` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `JobInfo`
 -- ----------------------------
 BEGIN;
-INSERT INTO `JobInfo` VALUES ('1', 'Date', 'Grower', '2017-08-16 23:49:36', '2017-08-16 23:49:36', 'FarmName', 'FieldName', 'AppType', '0', 'Acres'), ('2', 'Date', 'Grower', '2017-08-16 23:49:55', '2017-08-16 23:49:55', 'FarmName', 'FieldName', 'AppType', '0', 'Acres'), ('3', 'Xd', 'Sdf', '2017-08-17 00:08:03', '2017-08-17 00:08:03', 'Sd', 'Dfdsf', 'Sdf', 'Hhh', '');
+INSERT INTO `JobInfo` VALUES ('7', 'Fddhj', 'Gghh', '2017-08-22 16:19:47', '2017-08-22 16:19:47', 'Ggghh', 'Fhjjh', 'Ggghh', 'Vgghhj', 'Gghhj', 'Hggh', '', 'Test1'), ('8', 'Vdbh', 'Gffh', '2017-08-22 21:47:04', '2017-08-22 21:47:04', 'Vggh', 'Hgggh', 'Bgfgh', 'Ggghh', 'Ggghhj', 'I', '', 'U');
 COMMIT;
 
 -- ----------------------------
@@ -81,13 +86,13 @@ CREATE TABLE `LoginInfo` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `LoginInfo`
 -- ----------------------------
 BEGIN;
-INSERT INTO `LoginInfo` VALUES ('12', 'Ttes', 'test', '2017-08-17 00:07:24', '2017-08-17 00:07:24');
+INSERT INTO `LoginInfo` VALUES ('13', 'Test1', 'test', '2017-08-22 16:18:59', '2017-08-22 16:18:59'), ('14', '', '', '2017-08-22 16:23:55', '2017-08-22 16:23:55'), ('15', '', '', '2017-08-22 16:26:20', '2017-08-22 16:26:20'), ('16', 'Jch', 'vc', '2017-08-22 21:19:09', '2017-08-22 21:19:09'), ('17', 'U', 'p', '2017-08-22 21:46:30', '2017-08-22 21:46:30');
 COMMIT;
 
 -- ----------------------------
@@ -100,13 +105,13 @@ CREATE TABLE `TaskReminder` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `TaskReminder`
 -- ----------------------------
 BEGIN;
-INSERT INTO `TaskReminder` VALUES ('3', 'test2', '2017-08-19 02:01:01', '2017-08-19 02:01:01');
+INSERT INTO `TaskReminder` VALUES ('3', 'test2', '2017-08-19 02:01:01', '2017-08-19 02:01:01'), ('4', 'test', '2017-08-22 16:25:34', '2017-08-22 16:25:34'), ('5', 'test', '2017-08-22 16:25:57', '2017-08-22 16:25:57');
 COMMIT;
 
 -- ----------------------------
