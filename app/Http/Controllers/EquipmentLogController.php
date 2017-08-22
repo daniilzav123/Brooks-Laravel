@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use \Serverfireteam\Panel\CrudController;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\EquipmentLog;
 
@@ -72,9 +72,15 @@ class EquipmentLogController extends CrudController{
     {
         $equiplogItem = array();
         $equiplogItem['jobID'] = $request['id'];
-        $equiplogItem['Date'] = $request['Date'];
-        $equiplogItem['Hour'] = $request['Hour'];
+        $equiplogItem['Date'] = $request['date'];
+        $equiplogItem['Hour'] = $request['hour'];
         $equip = EquipmentLog::create($equiplogItem);
         return response(['response' => 'success']);
+    }
+
+    public function getEquipList(Request $request)
+    {
+        $jobs = DB::table('EquipmentLog')->get();
+        return response(['response' => $jobs]);
     }
 }

@@ -26,3 +26,4 @@ Route::resource('/job/create', 'JobInfoController');
 Route::resource('/job/search', 'JobInfoController@getJobList');
 Route::resource('/task/reminder', 'TaskReminderController');
 Route::resource('/equip/log', 'EquipmentLogController');
+Route::resource('/equip/search', 'EquipmentLogController@getEquipList');
