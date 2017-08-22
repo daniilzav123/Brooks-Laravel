@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class EquipmentLog extends Model {
 
     protected $table = 'EquipmentLog';
-    protected $fillable = array('field');
+    protected $fillable = array('jobID', 'Date', 'Hour');
 }

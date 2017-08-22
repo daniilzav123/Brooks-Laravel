@@ -31,13 +31,15 @@ class EquipmentLogController extends CrudController{
         */
 
         $this->filter = \DataFilter::source(new \App\EquipmentLog);
-        $this->filter->add('Field', 'Field', 'text');
+        $this->filter->add('jobID', 'jobID', 'text');
         $this->filter->submit('search');
         $this->filter->reset('reset');
         $this->filter->build();
 
         $this->grid = \DataGrid::source($this->filter);
-        $this->grid->add('field', 'field');
+        $this->grid->add('jobID', 'jobID');
+        $this->grid->add('Date', 'Date');
+        $this->grid->add('Hour', 'Hour');
         $this->grid->add('created_at', 'Created At');
         $this->grid->add('updated_at', 'Updated At');
         $this->addStylesToGrid();
@@ -69,7 +71,9 @@ class EquipmentLogController extends CrudController{
     public function store(Request $request)
     {
         $equiplogItem = array();
-        $equiplogItem['field'] = $request['data'];
+        $equiplogItem['jobID'] = $request['id'];
+        $equiplogItem['Date'] = $request['Date'];
+        $equiplogItem['Hour'] = $request['Hour'];
         $equip = EquipmentLog::create($equiplogItem);
         return response(['response' => 'success']);
     }
