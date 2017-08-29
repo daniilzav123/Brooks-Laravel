@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use \Serverfireteam\Panel\CrudController;
-use App\JobInfo;
-
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\EquipmentSchedule;
 
-class JobInfoController extends CrudController{
+class EquipmentScheduleController extends CrudController{
 
     public function all($entity){
         parent::all($entity); 
@@ -31,23 +30,20 @@ class JobInfoController extends CrudController{
 
         */
                  
-        $this->filter = \DataFilter::source(new \App\JobInfo);
-        $this->filter->add('Date', 'Date', 'text');
+        $this->filter = \DataFilter::source(new \App\EquipmentLog);
+        $this->filter->add('UserID', 'UserID', 'text');
         $this->filter->submit('search');
         $this->filter->reset('reset');
         $this->filter->build();
 
         $this->grid = \DataGrid::source($this->filter);
-        $this->grid->add('User', 'User');
-        $this->grid->add('Date', 'Date');
-        $this->grid->add('Grower', 'Grower');
-        $this->grid->add('FarmName', 'FarmName');
-        $this->grid->add('FieldName', 'FieldName');
-        $this->grid->add('AppType', 'AppType');
-        $this->grid->add('EquipID', 'EquipID');
-        $this->grid->add('Acres', 'Acres');
-        $this->grid->add('isSubmitted', 'isSubmitted');
-        $this->grid->add('note', 'note');
+        $this->grid->add('EquipmentID', 'EquipmentID');
+        $this->grid->add('ServicedDate', 'ServicedDate');
+        $this->grid->add('ServicedHours', 'ServicedHours');
+        $this->grid->add('NextDate', 'NextDate');
+        $this->grid->add('NextHours', 'NextHours');
+        $this->grid->add('MaintenanceItems', 'MaintenanceItems');
+        $this->grid->add('UserID', 'UserID');
         $this->grid->add('created_at', 'Created At');
         $this->grid->add('updated_at', 'Updated At');
         $this->addStylesToGrid();
@@ -77,36 +73,23 @@ class JobInfoController extends CrudController{
 
     public function store(Request $request)
     {
-        $jobinfoItem = array();
-        $jobinfoItem['User'] = $request['User'];
-        $jobinfoItem['Date'] = $request['Date'];
-        $jobinfoItem['Grower'] = $request['Grower'];
-        $jobinfoItem['FarmName'] = $request['FarmName'];
-        $jobinfoItem['FieldName'] = $request['FieldName'];
-        $jobinfoItem['AppType'] = $request['AppType'];
-        $jobinfoItem['EquipID'] = $request['EquipID'];
-        $jobinfoItem['Acres'] = $request['Acres'];
-        $jobinfoItem['note'] = $request['note'];
-        $jobinfoItem['imageUrl'] = $request['imageUrl'];
-        $jobinfoItem['isSubmitted'] = $request['isSubmitted'];
-        $jobinfo = JobInfo::create($jobinfoItem);
+        $equiplogItem = array();
+        $equiplogItem['EquipmentID'] = $request['EquipmentID'];
+        $equiplogItem['ServicedDate'] = $request['ServicedDate'];
+        $equiplogItem['ServicedHours'] = $request['ServicedHours'];
+        $equiplogItem['NextDate'] = $request['NextDate'];
+        $equiplogItem['NextHours'] = $request['NextHours'];
+        $equiplogItem['UserID'] = $request['UserID'];
+        $equiplogItem['MaintenanceItems'] = $request['MaintenanceItems'];
+        $equip = EquipmentSchedule::create($equiplogItem);
         return response(['response' => 'success']);
     }
 
-    public function getJobList(Request $request)
+
+    public function getEquipList(Request $request)
     {
-        $jobs = DB::table('JobInfo')->get();
+        $jobs = DB::table('EquipmentSchedule')->get();
         return response(['response' => $jobs]);
     }
 
-    public function submitCurrent(Request $request)
-    {
-        DB::table('JobInfo')->where('User', $request['User'])->update(['isSubmitted' => 1]);
-    }
-
-    public function previous(Request $request)
-    {
-        $jobs = DB::table('JobInfo')->where('isSubmitted', 1)->get();
-        return response(['response' => $jobs]);
-    }
 }

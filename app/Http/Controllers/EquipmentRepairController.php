@@ -7,9 +7,9 @@ use App\Http\Controllers\Controller;
 use \Serverfireteam\Panel\CrudController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\EquipmentLog;
+use App\EquipmentRepair;
 
-class EquipmentLogController extends CrudController{
+class EquipmentRepairController extends CrudController{
 
     public function all($entity){
         parent::all($entity); 
@@ -29,18 +29,22 @@ class EquipmentLogController extends CrudController{
 			$this->addStylesToGrid();
 
         */
-
+                 
         $this->filter = \DataFilter::source(new \App\EquipmentLog);
-        $this->filter->add('jobID', 'jobID', 'text');
+        $this->filter->add('UserID', 'UserID', 'text');
         $this->filter->submit('search');
         $this->filter->reset('reset');
         $this->filter->build();
 
         $this->grid = \DataGrid::source($this->filter);
-        $this->grid->add('jobID', 'jobID');
-        $this->grid->add('UserID', 'UserID');
+        $this->grid->add('EquipmentID', 'EquipmentID');
         $this->grid->add('Date', 'Date');
-        $this->grid->add('Hour', 'Hour');
+        $this->grid->add('Hours', 'Hours');
+        $this->grid->add('RepairedBy', 'RepairedBy');
+        $this->grid->add('RepairNotes', 'RepairNotes');
+        $this->grid->add('RepairNotesPhoto', 'RepairNotesPhoto');
+        $this->grid->add('RepairNeeded', 'RepairNeeded');
+        $this->grid->add('UserID', 'UserID');
         $this->grid->add('created_at', 'Created At');
         $this->grid->add('updated_at', 'Updated At');
         $this->addStylesToGrid();
@@ -48,7 +52,7 @@ class EquipmentLogController extends CrudController{
         return $this->returnView();
 
     }
-    
+
     public function  edit($entity){
         
         parent::edit($entity);
@@ -72,24 +76,43 @@ class EquipmentLogController extends CrudController{
     public function store(Request $request)
     {
         $equiplogItem = array();
-        $equiplogItem['jobID'] = $request['EquipmentID'];
-        $equiplogItem['Date'] = $request['date'];
-        $equiplogItem['Hour'] = $request['hour'];
+        $equiplogItem['EquipmentID'] = $request['EquipmentID'];
+        $equiplogItem['Date'] = $request['Date'];
+        $equiplogItem['Hours'] = $request['Hours'];
+        $equiplogItem['RepairedBy'] = $request['RepairedBy'];
+        $equiplogItem['RepairNotes'] = $request['RepairNotes'];
+        $equiplogItem['RepairNotesPhoto'] = $request['RepairNotesPhoto'];
+        $equiplogItem['RepairNeeded'] = $request['RepairNeeded'];
         $equiplogItem['UserID'] = $request['UserID'];
-        $equip = EquipmentLog::create($equiplogItem);
+        $equip = EquipmentRepair::create($equiplogItem);
         return response(['response' => 'success']);
     }
 
+
     public function getEquipList(Request $request)
     {
-        $jobs = DB::table('EquipmentLog')->get();
+        $jobs = DB::table('EquipmentRepair')->get();
+        return response(['response' => $jobs]);
+    }
+    public function viewneeded(Request $request)
+    {
+        $jobs = DB::table('EquipmentRepair')->get();
         return response(['response' => $jobs]);
     }
 
-    public function getEquipLogHistory(Request $request)
+
+    public function createneeded(Request $request)
     {
-        $jobs = DB::table('EquipmentLog')->get();
-        return response(['response' => $jobs]);
+        $equiplogItem = array();
+        $equiplogItem['EquipmentID'] = $request['EquipmentID'];
+        $equiplogItem['Date'] = $request['Date'];
+        $equiplogItem['Hours'] = $request['Hours'];
+        $equiplogItem['RepairNotes'] = $request['RepairNotes'];
+        $equiplogItem['RepairNotesPhoto'] = $request['RepairNotesPhoto'];
+        $equiplogItem['RepairNeeded'] = $request['RepairNeeded'];
+        $equiplogItem['UserID'] = $request['UserID'];
+        $equip = EquipmentRepair::create($equiplogItem);
+        return response(['response' => 'success']);
     }
 
 }

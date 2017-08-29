@@ -72,4 +72,11 @@ class TaskReminderController extends CrudController{
         $task = TaskReminder::create($taskItem);
         return response(['response' => 'success']);
     }
+
+    public function getReminders(Request $request)
+    {
+        $jobs = DB::table('TaskReminder')->get();
+        return response(['response' => $jobs]);
+    }
+
 }

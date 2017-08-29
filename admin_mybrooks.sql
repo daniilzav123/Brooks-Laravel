@@ -11,7 +11,7 @@
  Target Server Version : 50635
  File Encoding         : utf-8
 
- Date: 08/22/2017 16:14:39 PM
+ Date: 08/29/2017 11:43:05 AM
 */
 
 SET NAMES utf8;
@@ -37,15 +37,68 @@ CREATE TABLE `EquipmentLog` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `Date` varchar(100) DEFAULT NULL,
   `Hour` varchar(10) DEFAULT NULL,
+  `UserID` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
---  Records of `EquipmentLog`
+--  Table structure for `EquipmentRepair`
 -- ----------------------------
-BEGIN;
-INSERT INTO `EquipmentLog` VALUES ('6', '0', '2017-08-22 21:48:15', '2017-08-22 21:48:15', null, null), ('7', '0', '2017-08-22 21:52:58', '2017-08-22 21:52:58', '2017-01-01', '22'), ('8', '1', '2017-08-22 21:54:10', '2017-08-22 21:54:10', null, '0'), ('9', '8', '2017-08-22 22:03:37', '2017-08-22 22:03:37', '2017-01-01', '8');
-COMMIT;
+DROP TABLE IF EXISTS `EquipmentRepair`;
+CREATE TABLE `EquipmentRepair` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `EquipmentID` varchar(255) DEFAULT NULL,
+  `Date` varchar(255) DEFAULT NULL,
+  `Hours` varchar(255) DEFAULT NULL,
+  `UserID` varchar(255) DEFAULT NULL,
+  `RepairedBy` varchar(255) DEFAULT NULL,
+  `RepairNotes` varchar(255) DEFAULT NULL,
+  `RepairNotesPhoto` varchar(255) DEFAULT NULL,
+  `RepairNeeded` int(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Table structure for `EquipmentRoutine`
+-- ----------------------------
+DROP TABLE IF EXISTS `EquipmentRoutine`;
+CREATE TABLE `EquipmentRoutine` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `EquipmentID` varchar(255) DEFAULT NULL,
+  `MaintenanceType` varchar(255) DEFAULT NULL,
+  `Date` varchar(255) DEFAULT NULL,
+  `Hours` varchar(255) DEFAULT NULL,
+  `IsHighPressure` int(255) DEFAULT NULL,
+  `IsHighVolume` int(255) DEFAULT NULL,
+  `IsRemind` int(255) DEFAULT NULL,
+  `RemindHours` varchar(255) DEFAULT NULL,
+  `UserID` varchar(255) DEFAULT NULL,
+  `IsBed` int(255) DEFAULT NULL,
+  `IsChassis` int(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Table structure for `EquipmentSchedule`
+-- ----------------------------
+DROP TABLE IF EXISTS `EquipmentSchedule`;
+CREATE TABLE `EquipmentSchedule` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `EquipmentID` varchar(255) DEFAULT NULL,
+  `MaintenanceItems` varchar(255) DEFAULT NULL,
+  `ServicedDate` varchar(255) DEFAULT NULL,
+  `ServicedHours` varchar(255) DEFAULT NULL,
+  `NextDate` varchar(255) DEFAULT NULL,
+  `NextHours` varchar(255) DEFAULT NULL,
+  `UserID` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `JobInfo`
@@ -65,15 +118,9 @@ CREATE TABLE `JobInfo` (
   `note` varchar(255) DEFAULT NULL,
   `imageUrl` varchar(255) DEFAULT NULL,
   `User` varchar(255) DEFAULT NULL,
+  `isSubmitted` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-
--- ----------------------------
---  Records of `JobInfo`
--- ----------------------------
-BEGIN;
-INSERT INTO `JobInfo` VALUES ('7', 'Fddhj', 'Gghh', '2017-08-22 16:19:47', '2017-08-22 16:19:47', 'Ggghh', 'Fhjjh', 'Ggghh', 'Vgghhj', 'Gghhj', 'Hggh', '', 'Test1'), ('8', 'Vdbh', 'Gffh', '2017-08-22 21:47:04', '2017-08-22 21:47:04', 'Vggh', 'Hgggh', 'Bgfgh', 'Ggghh', 'Ggghhj', 'I', '', 'U');
-COMMIT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `LoginInfo`
@@ -86,14 +133,7 @@ CREATE TABLE `LoginInfo` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
-
--- ----------------------------
---  Records of `LoginInfo`
--- ----------------------------
-BEGIN;
-INSERT INTO `LoginInfo` VALUES ('13', 'Test1', 'test', '2017-08-22 16:18:59', '2017-08-22 16:18:59'), ('14', '', '', '2017-08-22 16:23:55', '2017-08-22 16:23:55'), ('15', '', '', '2017-08-22 16:26:20', '2017-08-22 16:26:20'), ('16', 'Jch', 'vc', '2017-08-22 21:19:09', '2017-08-22 21:19:09'), ('17', 'U', 'p', '2017-08-22 21:46:30', '2017-08-22 21:46:30');
-COMMIT;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `TaskReminder`
@@ -178,13 +218,13 @@ CREATE TABLE `links` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `main` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 --  Records of `links`
 -- ----------------------------
 BEGIN;
-INSERT INTO `links` VALUES ('1', 'Admins', 'Admin', null, '2016-07-05 14:46:39', '1'), ('4', 'Users List', 'LoginInfo', '2017-08-16 01:42:36', '2017-08-16 01:42:36', null), ('5', 'Application Log', 'JobInfo', '2017-08-16 23:36:33', '2017-08-16 23:36:33', null), ('7', 'Equipment Log', 'EquipmentLog', '2017-08-19 01:04:35', '2017-08-19 01:04:35', null), ('8', 'Task Reminder', 'TaskReminder', '2017-08-19 01:04:44', '2017-08-19 01:04:44', null);
+INSERT INTO `links` VALUES ('1', 'Admins', 'Admin', null, '2016-07-05 14:46:39', '1'), ('4', 'Users List', 'LoginInfo', '2017-08-16 01:42:36', '2017-08-16 01:42:36', null), ('5', 'Application Log', 'JobInfo', '2017-08-16 23:36:33', '2017-08-16 23:36:33', null), ('7', 'Equipment Log', 'EquipmentLog', '2017-08-19 01:04:35', '2017-08-19 01:04:35', null), ('8', 'Task Reminder', 'TaskReminder', '2017-08-19 01:04:44', '2017-08-19 01:04:44', null), ('9', 'Routines', 'EquipmentRoutine', '2017-08-29 17:02:30', '2017-08-29 17:02:30', null), ('10', 'Schedules', 'EquipmentSchedule', '2017-08-29 17:20:29', '2017-08-29 17:20:29', null), ('11', 'Repairs', 'EquipmentRepair', '2017-08-29 17:31:30', '2017-08-29 17:31:30', null);
 COMMIT;
 
 -- ----------------------------
